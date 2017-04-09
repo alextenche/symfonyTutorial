@@ -13,13 +13,18 @@ class AmazingController extends Controller
     /**
      * @Route("/amazing/{amazingName}")
      */
-    public function showAction($amazingName){
-        $templating = $this->container->get("templating");
-        $html = $templating->render('amazing/show.html.twig', [
-            'name' => $amazingName
-        ]);
+    public function showAction($amazingName)
+    {
+        $notes = [
+            "This is a text, this is a text",
+            "Note test",
+            "Another note test"
+        ];
 
-        return new Response($html);
+        return $this->render('amazing/show.html.twig', [
+            'name' => $amazingName,
+            'notes' => $notes
+        ]);
     }
 
 }
